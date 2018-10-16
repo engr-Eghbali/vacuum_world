@@ -1,13 +1,20 @@
 import random
-EnvMap = [[0,0,1,0],
-          [1,1,0,0],
-          [0,1,0,0],
-          [1,0,0,1]]
-log    = [[-1,-1,-1,-1],
-          [-1,-1,-1,-1],
-          [-1,-1,-1,-1],
-          [-1,-1,-1,-1]]
-percept=[2,1,1]
+import time
+EnvMap = [[0,0,1,0,0,1],
+          [1,1,0,0,1,1],
+          [0,1,0,0,1,0],
+          [1,0,0,1,0,0],
+          [0,1,0,0,1,0],
+          [1,1,1,0,1,1],
+          [0,0,1,0,0,0]]
+log    = [[-1,-1,-1,-1,-1,-1],
+          [-1,-1,-1,-1,-1,-1],
+          [-1,-1,-1,-1,-1,-1],
+          [-1,-1,-1,-1,-1,-1],
+          [-1,-1,-1,-1,-1,-1],
+          [-1,-1,-1,-1,-1,-1],
+          [-1,-1,-1,-1,-1,-1]]
+percept=[4,3,0]
 distanceSens=1
 flag=0
 moves=0
@@ -114,12 +121,15 @@ def checker():
 
 
 
-
+start=time.clock()
 while flag !=1:
     
     action=discusion(percept)
     if checker():
+        end=time.clock() 
+        print(end-start)
         print("all clear!")
         exit()
     else:    
         percept=perception(action)
+       
